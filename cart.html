@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+  body {
+  font-family: 'Calibri', sans-serif;
+  margin: 0;
+  background-color: white;
+  background-image: url('images/cart.jpg'); 
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+    h1 {
+      text-align: center;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      margin: 0.5rem auto;
+      max-width: 600px;
+      background-color: #3b5998;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .cart-summary {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<header>
+  <h1>MK Time</h1>
+  <nav>
+    <a href="index.html">MK Time</a>
+    <div class="dropdown">
+      <a href="javascript:void()">Products</a>
+      <div class="dropdown-content">
+        <a href="WProducts.html">Women</a>
+        <a href="MProducts.html">Men</a>
+      </div>
+    </div>
+    <a href="login.html">Sign In / Register</a>
+    <a href="Contact.html">Contact Us</a>
+  </nav>
+</header>
+<body>
+
+  <h1>🛒 cart</h1>
+
+  <div id="cart-container"></div>
+
+  <div class="cart-summary">
+    <h3>Total: £<span id="cart-total">0</span></h3>
+    <button id="clear-cart" class="btn">Empty Cart</button>
+  </div>
+
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById('cart-container');
+      const totalEl = document.getElementById('cart-total');
+      let total = 0;
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center;">Your cart is empty.</p>';
+        document.getElementById('clear-cart').style.display = 'none';
+        totalEl.innerText = '0';
+        return;
+      }
+
+      cart.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `<span>${item.name}</span><span>£${item.price}</span>`;
+        container.appendChild(div);
+        total += item.price;
+      });
+
+      totalEl.innerText = total.toFixed(2);
+    }
+
+    document.getElementById('clear-cart').addEventListener('click', function () {
+      localStorage.removeItem('cart');
+      location.reload();
+    });
+
+    loadCart();
+  </script>
+
+</body>
+</html>

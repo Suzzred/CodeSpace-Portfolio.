@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MK Time - Products</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Calibri', sans-serif;
+      margin: 0;
+      background-color: white;
+      background-image: url('images/ad.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    .watch-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .watch-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 280px;
+    }
+
+    .watch-box img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #fff;
+      color: #000;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cart-counter {
+      background: rgb(0, 255, 0);
+      border-radius: 50%;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.8rem;
+      margin-left: 5px;
+    }
+
+    @media (max-width: 700px) {
+      .watch-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MK Time</h1>
+  <nav>
+    <a href="index.html">MK Time</a>
+    <div class="dropdown">
+      <a href="javascript:void()">Products</a>
+      <div class="dropdown-content">
+        <a href="WProducts.html">Women</a>
+        <a href="MProducts.html">Men</a>
+      </div>
+    </div>
+    <a href="login.html">Sign In / Register</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="cart.html">Cart 🛒 <span id="cart-count" class="cart-counter">0</span></a>
+  </nav>
+</header>
+
+<main>
+      <h3 style="text-align:center;">Women's Collection</h3>
+    <div class="watch-section">
+      <div class="watch-box">
+        <img src="images/women2.jpg" alt="Rose Elegance">
+        <h4>Rose Elegance</h4>
+        <p>£250 - Rose gold watch with pearl dial.</p>
+        <button class="btn" onclick="addToCart('Rose Elegance', 250)">Add to Cart</button>
+      </div>
+      <div class="watch-box">
+        <img src="images/women3.jpg" alt="Crystal Grace">
+        <h4>Crystal Grace</h4>
+        <p>£500 - Crystal bezel with leather strap.</p>
+        <button class="btn" onclick="addToCart('Crystal Grace', 500)">Add to Cart</button>
+      </div>
+      <div class="watch-box">
+        <img src="images/women4.jpg" alt="Pure Gold">
+        <h4>Pure Gold</h4>
+        <p>£1000 - Make with diamonds.</p>
+        <button class="btn" onclick="addToCart('Pure Gold', 1000)">Add to Cart</button>
+         <!-- unique button to clear the cart -->
+  <div style="text-align:center; margin: 2rem 0;">
+    <button id="clear-cart" class="btn" style="background-color: red; color: white;">
+      Empty Cart  
+    </button>
+    </div>
+ 
+
+ </main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <p>
+        Office: 8 Nonexistent Place, Stockaree,<br>
+        EH0 1AB, Edinburgh<br>
+        Phone: 0131 50 00 000
+      </p>
+      <p>Email: <a href="mailto:orders@mktime.com" style="color:white;">orders@mktime.com</a></p>
+      <p>&copy; 2025 MK Time</p>
+    </div>
+
+    <div class="footer-right">
+      <a href="about.html">About Us</a>
+      <a href="TC.html">Terms and Conditions</a>
+      <a href="returns.html">Shipping & Return</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name, price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert(name + ' added to cart!');
+  }
+
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.getElementById('cart-count').innerText = cart.length;
+  }
+
+  // funtion to clear the cart
+  const clearCartButton = document.getElementById("clear-cart");
+if (clearCartButton) {
+  clearCartButton.addEventListener("click", function () {
+    localStorage.removeItem("cart");
+    alert("Empty cart");
+    updateCartCount();
+    location.reload(); 
+  });
+}
+
+  updateCartCount();
+</script>
+
+</body>
+</html>

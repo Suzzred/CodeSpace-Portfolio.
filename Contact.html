@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: 'Calibri', sans-serif;
+      margin: 0;
+      background-image: url('images/contact.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    header, footer {
+      background-color: rgba(59, 89, 152, 0.8);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    nav {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #3b5998;
+      min-width: 160px;
+      z-index: 1;
+      text-align: left;
+      border-radius: 4px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #2a4b8d;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    main {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #333;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: left;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    button {
+      background-color: #7890ee;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #143d88;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .footer-left, .footer-right {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-right a {
+      display: block;
+      color: white;
+      margin-bottom: 8px;
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MK Time</h1>
+  <nav>
+    <a href="index.html">MK Time</a>
+    <div class="dropdown">
+      <a href="javascript:void()">Products</a>
+      <div class="dropdown-content">
+        <a href="WProducts.html">Women</a>
+        <a href="MProducts.html">Men</a>
+      </div>
+    </div>
+    <a href="login.html">Sign In / Register</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="cart.html">Cart 🛒 <span id="cart-count" class="cart-counter">0</span></a>
+  </nav>
+</header>
+
+<main>
+  <h2>Contact Us</h2>
+  <p>We’d love to hear from you! Please fill out the form below and we’ll get back to you shortly.</p>
+
+  <form>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <p>
+        Office: 8 Nonexistent Place, Stockaree,<br>
+        EH0 1AB, Edinburgh<br>
+        Phone: 0131 50 00 000
+      </p>
+      <p>Email: <a href="mailto:orders@mktime.com" style="color:white;">orders@mktime.com</a></p>
+      <p>&copy; 2025 MK Time</p>
+    </div>
+    <div class="footer-right">
+      <a href="about.html">About Us</a>
+      <a href="TC.html">Terms and Conditions</a>
+      <a href="returns.html">Shipping & Return</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
